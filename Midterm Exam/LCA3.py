@@ -53,18 +53,35 @@ class Solution:
             if (left[0] and right[1]) or (left[1] and right[0]):
                 return root
 
+            if left[0] or left[1]:
+                return left
+
+            if right[0] or right[1]:
+                return right
+
             return False, False, None
 
         result = helper(root, A, B)
         return result[2]
 
+# {9,3,#,0,#,-4,#,-16,#,-18,-7,-63}
 
 sol = Solution()
-root = TreeNode(1)
-nodel = TreeNode(2)
-noder = TreeNode(3)
-root.left = nodel
-root.right = noder
+n9 = TreeNode(9)
+n3 = TreeNode(3)
+n0 = TreeNode(0)
+n_4 = TreeNode(-4)
+n_16 = TreeNode(-16)
+n_18 = TreeNode(-18)
+n_7 = TreeNode(-7)
+n_63 = TreeNode(-63)
 
-result = sol.lowestCommonAncestor3(root, nodel, noder)
-print result
+n9.left = n3
+n3.left = n0
+n0.left = n_4
+n_4.left = n_16
+n_16.left, n_16.right = n_18, n_7
+n_18.left = n_63
+
+result = sol.lowestCommonAncestor3(n9, n_63, n3)
+print result.val
