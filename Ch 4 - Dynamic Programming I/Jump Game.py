@@ -29,9 +29,9 @@ class Solution:
             return False
 
         length = len(A)
-        farthest = A[0]
+        farthest = 0
 
-        for i in range(1, length):
+        for i in range(length):
             if i <= farthest <= A[i] + i:
                 farthest = A[i] + i
 
@@ -39,5 +39,5 @@ class Solution:
 
 
 sol = Solution()
-A = [3, 2, 1, 0, 4]
+A = [3, 1, 1, 0, 5]
 print sol.canJump_greedy(A)
